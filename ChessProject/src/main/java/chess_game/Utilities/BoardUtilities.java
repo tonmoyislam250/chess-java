@@ -19,7 +19,6 @@ public class BoardUtilities {
 
     public static ImageIcon getImageOfTeamPiece(Team team, PieceTypes pieceType) {
         String imagePath = "C:" + File.separator + "Users" + File.separator + "Tonmo" + File.separator + "IdeaProjects" + File.separator + "Chess" + File.separator + "ChessProject" + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "chess_game" + File.separator + "Img" + File.separator;
-
         if (team == null || pieceType == null) {
             imagePath += "transparent.png";
         } else {
