@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package chess_game.Boards;
 
 import chess_game.Pieces.*;
@@ -10,20 +5,12 @@ import chess_game.Player.Player;
 import chess_game.Resources.*;
 import chess_game.Utilities.BoardUtilities;
 
-/**
- *
- * @author Enes Kızılcın <nazifenes.kizilcin@stu.fsm.edu.tr>
- */
-
-//The purpose of this class is keeping the tiles (which are empty or keeping a piece). Actually this class
-// is the abstract board that pieces are sit on. Not have visualization. 
-//The all board you see is the visualized version of this board.
 
 public class Board implements java.io.Serializable{
 
     private final Tile[][] tiles;
-    private Player whitePlayer;
-    private Player blackPlayer;
+    private final Player whitePlayer;
+    private final Player blackPlayer;
     private Player currentPlayer;
     private Tile chosenTile = null;
 
@@ -53,11 +40,7 @@ public class Board implements java.io.Serializable{
         {
             return false;
         }
-        if(chosenTile.getPiece() == null)
-        {
-            return false;   
-        }
-        return true;
+        return chosenTile.getPiece() != null;
     }
 
     public void setChosenTile(Tile chosenTile) {

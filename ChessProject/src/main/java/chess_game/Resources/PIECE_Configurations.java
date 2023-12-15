@@ -1,20 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package chess_game.Resources;
 
 import chess_game.Pieces.Coordinate;
 import chess_game.Pieces.Team;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-/**
- *
- * @author Enes Kızılcın <nazifenes.kizilcin@stu.fsm.edu.tr>
- */
 public class PIECE_Configurations {
 
     //this coordinates means a knıght can make 8 different moves in a possible position. Its current position plus this positions shows its possible move coordinates.
@@ -23,7 +13,7 @@ public class PIECE_Configurations {
     //this coordinates shows a bishops available move directions from its current position;
     public static Coordinate[] BISHOP_MOVES = {new Coordinate(1, 1), new Coordinate(-1, 1), new Coordinate(1, -1), new Coordinate(-1, -1)};
 
-    //this coordinates shows a roooks available move directions from its current position;
+    //this coordinates shows a rooks available move directions from its current position;
     public static Coordinate[] ROOK_MOVES = {new Coordinate(0, 1), new Coordinate(0, -1), new Coordinate(1, 0), new Coordinate(-1, 0)};
 
     //this coordinates shows a queens available move directions from its current position;

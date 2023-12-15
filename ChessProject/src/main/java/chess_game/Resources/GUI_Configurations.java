@@ -8,11 +8,6 @@ package chess_game.Resources;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-
-/**
- *
- * @author Enes Kızılcın <nazifenes.kizilcin@stu.fsm.edu.tr>
- */
 public class GUI_Configurations {
 
     public static int SCREEN_WIDTH = 600;

@@ -13,10 +13,6 @@ import chess_game.Utilities.BoardUtilities;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Enes Kızılcın <nazifenes.kizilcin@stu.fsm.edu.tr>
- */
 public class Rook extends Piece{
 
     public Rook(Team team)
@@ -26,7 +22,7 @@ public class Rook extends Piece{
     
     @Override
     public List<Move> availableMoves(Board board,Coordinate currentCoord) {
-         List<Move> possibleMoves = new ArrayList<Move>();
+         List<Move> possibleMoves = new ArrayList<>();
         Tile currentTile = board.getTile(currentCoord);
         Tile destinationTile;
         Coordinate destinationCoordinate;
@@ -40,10 +36,8 @@ public class Rook extends Piece{
                 } else {
                     if (destinationTile.getPiece().getTeam() != this.getTeam()) {
                         possibleMoves.add(new Move(board, currentTile, destinationTile));
-                        break;
-                    } else {
-                        break;
                     }
+                    break;
                 }
             }
         }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package chess_game.Utilities;
 
 import chess_game.Boards.Board;
@@ -13,10 +9,7 @@ import chess_game.Pieces.PieceTypes;
 import chess_game.Pieces.Team;
 import chess_game.Resources.PIECE_Configurations;
 
-/**
- *
- * @author Enes Kızılcın <nazifenes.kizilcin@stu.fsm.edu.tr>
- */
+
 public class MoveUtilities {
 
     public static boolean isValidMove(Board board, Tile destinationTile) {

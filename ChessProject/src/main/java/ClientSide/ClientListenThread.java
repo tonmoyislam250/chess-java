@@ -4,7 +4,6 @@ import Messages.Message;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ClientSide.*;
 import Messages.MovementMessage;
 import chess_game.Boards.Board;
 import chess_game.Move.Move;
@@ -14,18 +13,7 @@ import chess_game.Player.Player;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-/*
-  To change this license header, choose License Headers in Project Properties.
-  To change this template file, choose Tools | Templates
-  and open the template in the editor.
- */
 
- /* 9
- 
-  @author Enes Kızılcın <nazifenes.kizilcin@stu.fsm.edu.tr>
- */
-//The purpose of this thread is listening the server continiously if there is a message incoming to our input stream.
-// İf there is a message, then decide what will be happen.
 public class ClientListenThread extends Thread {
 
     Client client;
@@ -80,7 +68,7 @@ public class ClientListenThread extends Thread {
                             if (move.getKilledPiece().getType() == PieceTypes.KING) {
                                 Team winnerTeam;
                                 winnerTeam = (move.getKilledPiece().getTeam() == Team.BLACK) ? Team.WHITE : Team.BLACK;
-                                JOptionPane.showMessageDialog(null, "Winner: " + winnerTeam.toString());
+                                JOptionPane.showMessageDialog(null, "Winner: " + winnerTeam);
                                 Message message = new Message(Message.MessageTypes.END);
                                 message.content = null;
                                 client.Send(message);
@@ -106,7 +94,7 @@ public class ClientListenThread extends Thread {
             } catch (IOException ex) {
                 Logger.getLogger(ClientListenThread.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                System.out.println("Girilen class bulunamadı");
+                System.out.println("The entered class was not found");
             }
         }
     }

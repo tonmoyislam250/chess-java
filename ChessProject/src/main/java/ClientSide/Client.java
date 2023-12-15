@@ -1,8 +1,5 @@
 package ClientSide;
-
-import Messages.Message;
 import chess_game.Pieces.Team;
-import chess_game.gui.MainMenu;
 import chess_game.gui.Table;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -11,17 +8,6 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Enes Kızılcın <nazifenes.kizilcin@stu.fsm.edu.tr>
- */
-
-// The client which will be connect to server and play chess.
 public class Client {
 
     public Socket socket;

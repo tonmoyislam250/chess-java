@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package chess_game.Utilities;
 
 import chess_game.Boards.Tile;
@@ -16,10 +11,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Enes Kızılcın <nazifenes.kizilcin@stu.fsm.edu.tr>
- */
 public class BoardUtilities {
 
     public static boolean isValidCoordinate(Coordinate coord) {
@@ -27,8 +18,8 @@ public class BoardUtilities {
     }
 
     public static ImageIcon getImageOfTeamPiece(Team team, PieceTypes pieceType) {
+        String imagePath = "C:" + File.separator + "Users" + File.separator + "Tonmo" + File.separator + "IdeaProjects" + File.separator + "Chess" + File.separator + "ChessProject" + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "chess_game" + File.separator + "Img" + File.separator;
 
-        String imagePath = "C:\\Users\\enesk\\bilgisayar_aglari\\Chess\\ChessProject\\src\\main\\java\\chess_game\\Img\\";
         if (team == null || pieceType == null) {
             imagePath += "transparent.png";
         } else {
@@ -37,28 +28,44 @@ public class BoardUtilities {
             } else {
                 imagePath += "white";
             }
-            if (pieceType == PieceTypes.BISHOP) {
-                imagePath += "_bishop.png";
-            } else if (pieceType == PieceTypes.KING) {
-                imagePath += "_king.png";
-            } else if (pieceType == PieceTypes.QUEEN) {
-                imagePath += "_queen.png";
-            } else if (pieceType == PieceTypes.KNIGHT) {
-                imagePath += "_knight.png";
-            } else if (pieceType == PieceTypes.PAWN) {
-                imagePath += "_pawn.png";
-            } else if (pieceType == PieceTypes.ROOK) {
-                imagePath += "_rook.png";
+
+            switch (pieceType) {
+                case BISHOP:
+                    imagePath += "_bishop.png";
+                    break;
+                case KING:
+                    imagePath += "_king.png";
+                    break;
+                case QUEEN:
+                    imagePath += "_queen.png";
+                    break;
+                case KNIGHT:
+                    imagePath += "_knight.png";
+                    break;
+                case PAWN:
+                    imagePath += "_pawn.png";
+                    break;
+                case ROOK:
+                    imagePath += "_rook.png";
+                    break;
+                default:
+                    break;
             }
         }
+
         try {
             File img = new File(imagePath);
-            BufferedImage bufferedImage = ImageIO.read(img);
-            ImageIcon imageIcon = new ImageIcon(bufferedImage);
-            return imageIcon;
-
+            if (img.exists()) {
+                BufferedImage bufferedImage = ImageIO.read(img);
+                return new ImageIcon(bufferedImage);
+            } else {
+                // Handle case where image file doesn't exist
+                // You may want to log or display an error message
+                System.out.println("Image file does not exist: " + imagePath);
+            }
         } catch (IOException ex) {
-            Logger.getLogger(BOARD_Configurations.class.getName()).log(Level.SEVERE, null, ex);
+            // Handle IOException properly
+            Logger.getLogger(BoardUtilities.class.getName()).log(Level.SEVERE, "Error loading image: " + imagePath, ex);
         }
         return null;
     }

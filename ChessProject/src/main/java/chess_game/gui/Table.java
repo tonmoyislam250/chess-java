@@ -1,6 +1,3 @@
-/*
- 
- */
 package chess_game.gui;
 
 import ClientSide.Client;
@@ -11,17 +8,8 @@ import chess_game.Pieces.Team;
 import chess_game.Resources.GUI_Configurations;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-/**
- *
- * @author Enes Kızılcın <nazifenes.kizilcin@stu.fsm.edu.tr>
- */
-// Table is the composition class that have all the game data in it and controls every object.
-
 public class Table {
 
     private JFrame gameFrame;
@@ -39,7 +27,7 @@ public class Table {
         this.client = new Client(this);
         this.client.Connect("127.0.0.1", 4000);
         if (this.client.socket == null) {
-            JOptionPane.showMessageDialog(null, "Servera bağlanılamadı");
+            JOptionPane.showMessageDialog(null, "Server Not Connected");
             System.exit(0);
         }
         createMainMenu();
@@ -51,28 +39,25 @@ public class Table {
         //this.gameFrame.removeAll();
         this.mainMenu.getInfoLBL().setText("");
         this.mainMenu.getInfoLBL().setVisible(false);
-        this.mainMenu.getPlayBTN().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        this.mainMenu.getPlayBTN().addActionListener(e -> {
 
-                if (client.isPaired == false) {
-                    mainMenu.getInfoLBL().setVisible(true);
-                    mainMenu.getInfoLBL().setText("Matching...");
-                    mainMenu.getPlayBTN().setEnabled(false);
-                    Message msg = new Message(Message.MessageTypes.PAIRING);
-                    msg.content = "ESLESME";
-                    client.Send(msg);
-                }
-                if (client.isPaired == true) {
-                    mainMenu.getInfoLBL().setText("Matched");
-                    mainMenu.getInfoLBL().setText("Game is starting...");
-                    mainMenu.getPlayBTN().setEnabled(true);
-                    mainMenu.getInfoLBL().setText("");
-                    mainMenu.getInfoLBL().setVisible(false);
-                    createGamePanel();
-                }
-
+            if (!client.isPaired) {
+                mainMenu.getInfoLBL().setVisible(true);
+                mainMenu.getInfoLBL().setText("Matching...");
+                mainMenu.getPlayBTN().setEnabled(false);
+                Message msg = new Message(Message.MessageTypes.PAIRING);
+                msg.content = "ESLESME";
+                client.Send(msg);
             }
+            if (client.isPaired) {
+                mainMenu.getInfoLBL().setText("Matched");
+                mainMenu.getInfoLBL().setText("Game is starting...");
+                mainMenu.getPlayBTN().setEnabled(true);
+                mainMenu.getInfoLBL().setText("");
+                mainMenu.getInfoLBL().setVisible(false);
+                createGamePanel();
+            }
+
         });
         this.gameFrame.add(mainMenu, BorderLayout.CENTER);
     }
